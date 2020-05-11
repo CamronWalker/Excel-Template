@@ -1,9 +1,12 @@
 Attribute VB_Name = "ImportExport"
 ' https://www.rondebruin.nl/win/s9/win002.htm
 '
-' REQUIRES:
+' REQUIRES: (Goto Tools > References)
 ' Microsoft Visual Basic For Applications Extensibility 5.3
 ' Microsoft Scripting Runtime
+'
+' CHECK THIS BOX IN SETTINGS:
+' File > Options > Trust Center > Trust Center Settings > Macro Settings > Check "Trust access to the VBA project object model"
 
 Public Sub ExportModules()
     Dim bExport As Boolean
@@ -72,7 +75,7 @@ Public Sub ExportModules()
 End Sub
 
 
-Public Sub ImportModules()
+Public Sub ImportModules() ' TODO: Rewrite the import module.  It doesn't really work. Honestly don't use it.
     Dim wkbTarget As Excel.Workbook
     Dim objFSO As Scripting.FileSystemObject
     Dim objFile As Scripting.File
