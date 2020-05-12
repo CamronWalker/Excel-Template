@@ -17,7 +17,7 @@ Public Sub ExportModulesForGit()
     Dim szExportPath As String
     Dim szFileName As String
     Dim cmpComponent As VBIDE.VBComponent
-    PrependLogFile ("VBA Export Start")
+    AddLog ("VBA Export Start")
 
     ''' The code modules will be exported in a folder named.
     ''' VBAProjectFiles in the Documents folder.
@@ -74,7 +74,7 @@ Public Sub ExportModulesForGit()
    
     Next cmpComponent
 
-    PrependLogFile ("VBA Export Completed With No Errors")
+    AddLog ("VBA Export Completed With No Errors")
 End Sub
 
 
@@ -112,7 +112,7 @@ Function FolderWithVBAProjectFiles() As String
     
 End Function
 
-Sub PrependLogFile(LogEntry As String)
+Sub AddLog(LogEntry As String)
     Dim filesys, filetxt
     Dim logFileName As String: logFileName = Left(ActiveWorkbook.Name, Len(ActiveWorkbook.Name) - 5)
     If Range("Logging").Value = True Then
