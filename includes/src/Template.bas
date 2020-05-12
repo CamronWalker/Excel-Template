@@ -121,7 +121,13 @@ Sub AddLog(LogEntry As String)
             Set filetxt = filesys.OpenTextFile(Application.ActiveWorkbook.Path & "\" & logFileName & " Log.txt", ForWriting, True)
                 filetxt.WriteLine ("End Log")
                 filetxt.Close
+        Else
+            If FileLen(Application.ActiveWorkbook.Path & "\" & logFileName & " Log.txt") > 25000 Then
+                With filesys
+                    .CreateTextFile(Application.ActiveWorkbook.Path & "\" & logFileName & " Log.txt").Write Left(.OpenTextFile(Application.ActiveWorkbook.Path & "\" & logFileName & " Log.txt").ReadAll, 5000) & vbNewLine & "Log Trimmed " & Date & "_" & Time
+                End With
             End If
+        End If
         
         With filesys
             .CreateTextFile(Application.ActiveWorkbook.Path & "\" & logFileName & " Log.txt").Write Date & "_" & Time & ":  " & LogEntry & vbNewLine & .OpenTextFile(Application.ActiveWorkbook.Path & "\" & logFileName & " Log.txt").ReadAll
